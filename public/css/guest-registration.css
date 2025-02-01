@@ -1,0 +1,331 @@
+:root {
+    --primary: #1a1a1d;
+    --playfair: "Playfair Display", serif;
+    --great: "Great Vibes", serif;
+    --poppins: "poppins", serif;
+    --tangerine: "Tangerine", serif;
+    --wood: #deb887;
+}
+
+body {
+    background-color: var(--primary);
+}
+
+/* Landing Page */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    overflow: hidden;
+
+    position: relative;
+
+    .wrap-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        width: 100vw;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+    }
+    .wrap-background::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background-color: rgba(26, 26, 29, 0.75);
+    }
+    /* .wrap-background::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background: linear-gradient(to top, #1a1a1d 2%, transparent 45%);
+    } */
+
+    .pengantin-photo {
+        position: relative;
+        height: 13rem;
+        width: 13rem;
+        aspect-ratio: 1 / 1;
+        margin: 3rem auto 0 auto;
+
+        background-color: var(--wood);
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .title {
+        margin-top: 3.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1;
+        color: white;
+        gap: 0.75rem;
+        font-family: var(--great);
+        font-weight: 700;
+        font-size: 2.3rem;
+
+        .pengantin {
+            font-size: 2.7rem;
+            font-weight: 400;
+        }
+    }
+
+    .date-time {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        line-height: 1.2;
+        margin-top: 4rem;
+        font-family: var(--playfair);
+        color: rgba(255, 255, 255, 0.8);
+
+        .date {
+            font-size: 1.5rem;
+        }
+        .time {
+            font-size: 1.25rem;
+        }
+    }
+
+    .scroll {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 5vh;
+
+        a {
+            text-decoration: none;
+            i {
+                font-size: 2.5rem;
+                color: rgba(255, 255, 255, 0.8);
+            }
+        }
+    }
+
+    /* Ornamen */
+
+    .ornamen {
+        position: absolute;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .orn-1 {
+        top: 20%;
+        left: 5%;
+
+        img {
+            height: 15rem;
+            width: auto;
+        }
+    }
+    .orn-2 {
+        top: 20%;
+        left: 95%;
+
+        img {
+            height: 15rem;
+            width: auto;
+        }
+    }
+    .orn-3 {
+        bottom: -25%;
+        left: 0;
+
+        img {
+            height: 12.5rem;
+            width: auto;
+        }
+    }
+    .orn-4 {
+        bottom: -25%;
+        left: 100%;
+
+        img {
+            height: 12.5rem;
+            width: auto;
+        }
+    }
+
+    /* Ornamen */
+}
+/* Landing Page */
+
+.separation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5rem;
+
+    img {
+        width: 80vw;
+        height: auto;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+
+    .form-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        .sub-title {
+            font-size: 1.8rem;
+            font-family: var(--playfair);
+            color: white;
+        }
+        .sub-desc {
+            font-size: 0.9rem;
+            font-family: var(--poppins);
+            /* font-family: var(--playfair); */
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.3;
+        }
+    }
+
+    form {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+
+        .for-wrap {
+            display: flex;
+            flex-direction: column;
+            /* gap: 0.25rem; */
+            label {
+                font-size: 1.3rem;
+                line-height: 1.3;
+                font-family: var(--great);
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            input {
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid var(--wood);
+                color: var(--wood);
+                font-family: var(--poppins) !important;
+            }
+
+            input:focus {
+                font-family: var(--poppins) !important;
+                outline: none;
+            }
+        }
+
+        .for-submit {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button {
+                padding: 0.5rem 1.5rem;
+                border-radius: 2rem;
+                font-size: 0.9rem;
+                font-family: var(--poppins);
+                font-weight: 600;
+                color: var(--wood);
+                border: 2px solid var(--wood);
+                background-color: transparent;
+            }
+        }
+    }
+
+    .ornamen-star {
+        position: absolute;
+        z-index: 0;
+    }
+
+    .or-one {
+        top: 7rem;
+        right: 1.5rem;
+
+        img {
+            height: 4rem;
+            width: auto;
+        }
+    }
+    .or-two {
+        bottom: 2.5rem;
+        left: 1rem;
+
+        img {
+            height: 3rem;
+            width: auto;
+        }
+    }
+    .or-three {
+        bottom: 1rem;
+        right: 3rem;
+
+        img {
+            height: 2.5rem;
+            width: auto;
+
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.swal2-popup {
+    width: 80vw;
+
+    .swal2-title {
+        margin: 0;
+        padding: 0.5rem;
+
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-family: var(--poppins);
+    }
+
+    .swal2-html-container {
+        margin: 0;
+        padding: 0.25rem;
+        font-family: var(--poppins);
+        font-size: 0.95rem;
+        color: rgba(0, 0, 0, 0.6) !important;
+        line-height: 1.3;
+    }
+}
