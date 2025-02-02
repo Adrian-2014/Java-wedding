@@ -18,3 +18,4 @@ Route::post('/konfirmasi', [userController::class, 'konfirmasi']);
 // Admin
 Route::post('/add-guest', [adminController::class, 'addGuest']);
 Route::post('/update-guest', [adminController::class, 'updateGuest']);
+Route::post('/delete-guest', [adminController::class, 'deleteGuest']);

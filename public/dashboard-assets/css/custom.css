@@ -74,25 +74,37 @@
     tbody
     tr
     .td-act {
-    .wrap-act {
+    .wrapper-act {
         display: flex;
         align-items: center;
-        justify-content: center;
+        gap: 0.75rem;
 
-        .act {
-            height: 2.5rem;
-            width: 2.5rem;
+        .wrap-act {
             display: flex;
             align-items: center;
             justify-content: center;
 
-            background-color: rgb(0, 183, 255);
-            border-radius: 0.3rem;
+            .act {
+                height: 2.5rem;
+                width: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-            cursor: pointer;
+                background-color: rgb(0, 183, 255);
+                border-radius: 0.3rem;
 
-            i {
-                font-size: 1.2rem;
+                cursor: pointer;
+
+                i {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .delete-data {
+            .act {
+                background-color: red;
             }
         }
     }

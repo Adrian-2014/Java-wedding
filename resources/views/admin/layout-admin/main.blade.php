@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard-assets') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('dashboard-assets') }}/img/favicon.png">
     <title>
-        Black Dashboard by Creative Tim
+        Dashboard - Admin
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -34,6 +34,9 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('dashboard-assets') }}/demo/demo.css" rel="stylesheet" />
 
+    <!-- Tambahkan di bagian <head> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     @yield('internal-css')
 </head>
@@ -91,18 +94,15 @@
         </div>
     </div> --}}
 
-    <!-- Tambahkan di bagian <head> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!--   Core JS Files   -->
     <script src="{{ asset('dashboard-assets') }}/js/core/jquery.min.js"></script>
+    <script src="{{ asset('dashboard-assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <script src="{{ asset('dashboard-assets') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('dashboard-assets') }}/js/core/bootstrap.min.js"></script>
-    <script src="{{ asset('dashboard-assets') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!--  Google Maps Plugin    -->
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
     <!-- Chart JS -->
     <script src="{{ asset('dashboard-assets') }}/js/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
@@ -228,7 +228,6 @@
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
             demo.initDashboardPageCharts();
-
         });
     </script>
     <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>

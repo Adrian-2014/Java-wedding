@@ -44,4 +44,16 @@ class adminController extends Controller
             return back()->with('success', 'Data berhasil diubah!');
 
     }
+
+    
+    public function deleteGuest(Request $request) {
+        $request->validate([
+            'id',
+        ]);
+        $guest = User::where('id', $request->id)->first();
+
+        // dd($request->all());
+        $guest->delete();
+        return redirect()->back()->with('success', 'Data berhasil Dihapus!');
+    }
 }

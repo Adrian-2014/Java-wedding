@@ -30,16 +30,21 @@ class userController extends Controller
             'status' => 'required',
         ]);
 
-        $guest = User::where('id', $request->id)->first();
-        $guest->status = $request->status; 
-        $guest->email = $request->email; 
-        $guest->save();
+        $validGuest = User::where('email', $request->email)->first();
 
-        return redirect()->back()->with('success', 'Terimakasih Bapak/ibu ' . $request->name . ' atas umpan baliknya.');
+        if(!$validGuest) {
+            $guest = User::where('id', $request->id)->first();
+            $guest->status = $request->status; 
+            $guest->email = $request->email; 
+            $guest->save();
+    
+            return redirect()->back()->with('success', 'Terimakasih Bapak/ibu ' . $request->name . ' atas umpan baliknya.');
+        }else {
+            return redirect()->back()->with('error', 'Email ' . $request->email . ' tidak valid! pilih email lain.');
+        }
     }
 
     public function registrasi(Request $request) {
-
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -56,4 +61,5 @@ class userController extends Controller
 
         }
     }
+
 }

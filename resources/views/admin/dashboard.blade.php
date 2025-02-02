@@ -3,6 +3,7 @@
 @section('internal-css')
     <link rel="stylesheet" href="{{ asset('dashboard-assets/css/custom.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @include('admin.layout-admin.sidebar')
@@ -147,10 +148,19 @@
                                                 </div>
                                             </td>
                                             <td class="td-act">
-                                                <div class="wrap-act" data-toggle="modal"
-                                                    data-target="#update-modal-{{ $tamu->id }}">
-                                                    <div class="act">
-                                                        <i class="bi bi-pencil-square"></i>
+                                                <div class="wrapper-act">
+                                                    <div class="wrap-act" data-toggle="modal"
+                                                        data-target="#update-modal-{{ $tamu->id }}">
+
+                                                        <div class="act">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="wrap-act delete-data" data-id="{{ $tamu->id }}">
+                                                        <div class="act">
+                                                            <i class="bi bi-trash3"></i>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -186,8 +196,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Kirim Undangan</button>
+                        <div></div>
+                        <button type="submit" class="btn btn-primary">TAMBAH DATA</button>
                     </div>
                 </form>
             </div>
@@ -217,7 +227,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div></div>
                             <button type="submit" class="btn btn-primary">Kirim Undangan</button>
                         </div>
                     </form>
@@ -273,6 +283,57 @@
                         }).showToast();
                     }).catch(err => {
                         console.error("Gagal menyalin: ", err);
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteButtons = document.querySelectorAll('.delete-data');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = button.getAttribute('data-id'); // Ambil ID item
+
+                    // Tampilkan SweetAlert konfirmasi
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: 'Data ini akan dihapus secara permanen!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal',
+                        // cancelButtonColor: "#DD6B55",
+                        confirmButtonColor: "#e14eca",
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Buat form delete secara dinamis
+                            const form = document.createElement('form');
+                            form.method = 'POST';
+                            form.action = '/delete-guest';
+
+                            // Tambahkan token CSRF untuk melindungi dari serangan CSRF
+                            const csrfToken = document.createElement('input');
+                            csrfToken.type = 'hidden';
+                            csrfToken.name = '_token';
+                            csrfToken.value = document.querySelector(
+                                'meta[name="csrf-token"]').getAttribute('content');
+                            form.appendChild(csrfToken);
+
+                            // Tambahkan input untuk ID item
+                            const idInput = document.createElement('input');
+                            idInput.type = 'hidden';
+                            idInput.name = 'id';
+                            idInput.value = itemId;
+                            form.appendChild(idInput);
+
+                            // Kirim form
+                            document.body.appendChild(form);
+                            form.submit();
+                        }
                     });
                 });
             });
